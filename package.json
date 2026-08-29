@@ -1,0 +1,147 @@
+{
+	"name": "multi-claude",
+	"displayName": "MultiClaude",
+	"description": "Run several independent Claude Code sessions as separate icons in the VS Code side bar",
+	"version": "0.1.0",
+	"publisher": "yummygroup",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.94.0"
+	},
+	"categories": [
+		"AI",
+		"Chat"
+	],
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"extensionDependencies": [
+		"Anthropic.claude-code"
+	],
+	"contributes": {
+		"configuration": {
+			"title": "MultiClaude",
+			"properties": {
+				"multiClaude.count": {
+					"type": "number",
+					"default": 2,
+					"minimum": 0,
+					"maximum": 5,
+					"description": "How many Claude session icons to show in the side bar (0-5)."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "multiClaude.restore",
+				"title": "MultiClaude: Restore original Claude Code"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "multiClaude1",
+					"title": "Claude 1",
+					"icon": "resources/claude-1.svg",
+					"when": "config.multiClaude.count >= 1"
+				},
+				{
+					"id": "multiClaude2",
+					"title": "Claude 2",
+					"icon": "resources/claude-2.svg",
+					"when": "config.multiClaude.count >= 2"
+				},
+				{
+					"id": "multiClaude3",
+					"title": "Claude 3",
+					"icon": "resources/claude-3.svg",
+					"when": "config.multiClaude.count >= 3"
+				},
+				{
+					"id": "multiClaude4",
+					"title": "Claude 4",
+					"icon": "resources/claude-4.svg",
+					"when": "config.multiClaude.count >= 4"
+				},
+				{
+					"id": "multiClaude5",
+					"title": "Claude 5",
+					"icon": "resources/claude-5.svg",
+					"when": "config.multiClaude.count >= 5"
+				}
+			]
+		},
+		"views": {
+			"multiClaude1": [
+				{
+					"type": "webview",
+					"id": "multiClaude.session1",
+					"name": "Claude 1"
+				}
+			],
+			"multiClaude2": [
+				{
+					"type": "webview",
+					"id": "multiClaude.session2",
+					"name": "Claude 2"
+				}
+			],
+			"multiClaude3": [
+				{
+					"type": "webview",
+					"id": "multiClaude.session3",
+					"name": "Claude 3"
+				}
+			],
+			"multiClaude4": [
+				{
+					"type": "webview",
+					"id": "multiClaude.session4",
+					"name": "Claude 4"
+				}
+			],
+			"multiClaude5": [
+				{
+					"type": "webview",
+					"id": "multiClaude.session5",
+					"name": "Claude 5"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"build": "tsc -p .",
+		"watch": "tsc -p . -w",
+		"lint": "biome check .",
+		"fix": "biome check --write .",
+		"package": "bun run check && bun run build && bunx @vscode/vsce package --no-dependencies",
+		"install-ext": "bun run package && code --profile Def --install-extension multi-claude-0.1.0.vsix --force",
+		"check": "bun run src/patch.check.ts",
+		"publish-ext": "bun run package && bunx @vscode/vsce publish --no-dependencies"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.10.0",
+		"@types/vscode": "^1.94.0",
+		"@vscode/vsce": "^3.2.0",
+		"typescript": "^5.7.2"
+	},
+	"keywords": [
+		"claude",
+		"claude code",
+		"anthropic",
+		"ai",
+		"sidebar",
+		"sessions"
+	],
+	"icon": "resources/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/fristaylo/multi-claude.git"
+	},
+	"homepage": "https://github.com/fristaylo/multi-claude#readme",
+	"bugs": {
+		"url": "https://github.com/fristaylo/multi-claude/issues"
+	}
+}

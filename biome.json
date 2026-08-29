@@ -1,0 +1,6 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": { "ignore": ["out", "*.vsix"] },
+	"formatter": { "indentStyle": "tab", "lineWidth": 110 },
+	"linter": { "rules": { "recommended": true, "suspicious": { "noExplicitAny": "off" } } }
+}

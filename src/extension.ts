@@ -2,12 +2,14 @@ import { copyFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import * as vscode from "vscode";
 import { MARK, isPatched, patchSource } from "./patch";
+import { checkForUpdate } from "./update";
 
 const CLAUDE_ID = "Anthropic.claude-code";
 const SLOTS = 5;
 
 export async function activate(ctx: vscode.ExtensionContext) {
 	ctx.subscriptions.push(vscode.commands.registerCommand("multiClaude.restore", restore));
+	checkForUpdate(ctx).catch((e) => console.warn("MultiClaude: update check failed", e));
 
 	const claude = vscode.extensions.getExtension(CLAUDE_ID);
 	if (!claude) {

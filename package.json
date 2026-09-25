@@ -1,9 +1,9 @@
 {
-	"name": "multi-claude-sessions",
-	"displayName": "Fristaylo-sessions",
+	"name": "multi-claude",
+	"displayName": "MultiClaude",
 	"description": "Run several independent Claude Code sessions as separate icons in the VS Code side bar",
-	"version": "0.1.0",
-	"publisher": "YummyGroup",
+	"version": "0.2.0",
+	"publisher": "fristaylo",
 	"license": "MIT",
 	"engines": {
 		"vscode": "^1.94.0"
@@ -116,7 +116,7 @@
 		"lint": "biome check .",
 		"fix": "biome check --write .",
 		"package": "bun run check && bun run build && bunx @vscode/vsce package --no-dependencies -o releases/",
-		"install-ext": "bun run package && code --profile Def --install-extension releases/multi-claude-sessions-0.1.0.vsix --force",
+		"install-ext": "bun run package && code --profile Def --install-extension releases/multi-claude-0.2.0.vsix --force",
 		"check": "bun run src/patch.check.ts",
 		"publish-ext": "bun run package && bunx @vscode/vsce publish --no-dependencies"
 	},

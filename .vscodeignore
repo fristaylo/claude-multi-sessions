@@ -8,5 +8,5 @@ bun.lock
 .gitignore
 .git/**
 .github/**
-scripts/**
+releases/**
 .claude/**

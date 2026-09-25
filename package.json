@@ -1,5 +1,5 @@
 {
-	"name": "Fristaylo-sessions",
+	"name": "multi-claude-sessions",
 	"displayName": "Fristaylo-sessions",
 	"description": "Run several independent Claude Code sessions as separate icons in the VS Code side bar",
 	"version": "0.1.0",
@@ -116,8 +116,9 @@
 		"lint": "biome check .",
 		"fix": "biome check --write .",
 		"package": "bun run check && bun run build && bunx @vscode/vsce package --no-dependencies",
-		"install-ext": "bun run package && code --profile Def --install-extension Fristaylo-sessions-0.1.0.vsix --force",
+		"install-ext": "bun run package && code --profile Def --install-extension multi-claude-sessions-0.1.0.vsix --force",
 		"check": "bun run src/patch.check.ts",
+		"publish:npm": "node scripts/publish-npm.mjs",
 		"publish-ext": "bun run package && bunx @vscode/vsce publish --no-dependencies"
 	},
 	"devDependencies": {

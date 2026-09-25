@@ -8,3 +8,4 @@ bun.lock
 .gitignore
 .git/**
 .github/**
+scripts/**
